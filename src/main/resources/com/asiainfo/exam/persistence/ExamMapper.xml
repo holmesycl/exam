@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.asiainfo.exam.persistence.ExamMapper" >
+  <resultMap id="BaseResultMap" type="com.asiainfo.exam.domain.Exam" >
+    <id column="exam_id" property="examId" jdbcType="INTEGER" />
+    <result column="exam_name" property="examName" jdbcType="VARCHAR" />
+    <result column="exam_addr" property="examAddr" jdbcType="VARCHAR" />
+    <result column="answer_time" property="answerTime" jdbcType="TIMESTAMP" />
+    <result column="duration_time" property="durationTime" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="ahead_time" property="aheadTime" jdbcType="INTEGER" />
+    <result column="enter_code" property="enterCode" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    exam_id, exam_name, exam_addr, answer_time, duration_time, create_time, ahead_time, 
+    enter_code
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.asiainfo.exam.domain.ExamExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from exam
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from exam
+    where exam_id = #{examId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from exam
+    where exam_id = #{examId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.asiainfo.exam.domain.ExamExample" >
+    delete from exam
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.asiainfo.exam.domain.Exam" >
+    insert into exam (exam_id, exam_name, exam_addr, 
+      answer_time, duration_time, create_time, 
+      ahead_time, enter_code)
+    values (#{examId,jdbcType=INTEGER}, #{examName,jdbcType=VARCHAR}, #{examAddr,jdbcType=VARCHAR}, 
+      #{answerTime,jdbcType=TIMESTAMP}, #{durationTime,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{aheadTime,jdbcType=INTEGER}, #{enterCode,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.asiainfo.exam.domain.Exam" >
+    insert into exam
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="examId != null" >
+        exam_id,
+      </if>
+      <if test="examName != null" >
+        exam_name,
+      </if>
+      <if test="examAddr != null" >
+        exam_addr,
+      </if>
+      <if test="answerTime != null" >
+        answer_time,
+      </if>
+      <if test="durationTime != null" >
+        duration_time,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="aheadTime != null" >
+        ahead_time,
+      </if>
+      <if test="enterCode != null" >
+        enter_code,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="examId != null" >
+        #{examId,jdbcType=INTEGER},
+      </if>
+      <if test="examName != null" >
+        #{examName,jdbcType=VARCHAR},
+      </if>
+      <if test="examAddr != null" >
+        #{examAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="answerTime != null" >
+        #{answerTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="durationTime != null" >
+        #{durationTime,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="aheadTime != null" >
+        #{aheadTime,jdbcType=INTEGER},
+      </if>
+      <if test="enterCode != null" >
+        #{enterCode,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.asiainfo.exam.domain.ExamExample" resultType="java.lang.Integer" >
+    select count(*) from exam
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update exam
+    <set >
+      <if test="record.examId != null" >
+        exam_id = #{record.examId,jdbcType=INTEGER},
+      </if>
+      <if test="record.examName != null" >
+        exam_name = #{record.examName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.examAddr != null" >
+        exam_addr = #{record.examAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.answerTime != null" >
+        answer_time = #{record.answerTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.durationTime != null" >
+        duration_time = #{record.durationTime,jdbcType=INTEGER},
+      </if>
+      <if test="record.createTime != null" >
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.aheadTime != null" >
+        ahead_time = #{record.aheadTime,jdbcType=INTEGER},
+      </if>
+      <if test="record.enterCode != null" >
+        enter_code = #{record.enterCode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update exam
+    set exam_id = #{record.examId,jdbcType=INTEGER},
+      exam_name = #{record.examName,jdbcType=VARCHAR},
+      exam_addr = #{record.examAddr,jdbcType=VARCHAR},
+      answer_time = #{record.answerTime,jdbcType=TIMESTAMP},
+      duration_time = #{record.durationTime,jdbcType=INTEGER},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      ahead_time = #{record.aheadTime,jdbcType=INTEGER},
+      enter_code = #{record.enterCode,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.asiainfo.exam.domain.Exam" >
+    update exam
+    <set >
+      <if test="examName != null" >
+        exam_name = #{examName,jdbcType=VARCHAR},
+      </if>
+      <if test="examAddr != null" >
+        exam_addr = #{examAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="answerTime != null" >
+        answer_time = #{answerTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="durationTime != null" >
+        duration_time = #{durationTime,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="aheadTime != null" >
+        ahead_time = #{aheadTime,jdbcType=INTEGER},
+      </if>
+      <if test="enterCode != null" >
+        enter_code = #{enterCode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where exam_id = #{examId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.asiainfo.exam.domain.Exam" >
+    update exam
+    set exam_name = #{examName,jdbcType=VARCHAR},
+      exam_addr = #{examAddr,jdbcType=VARCHAR},
+      answer_time = #{answerTime,jdbcType=TIMESTAMP},
+      duration_time = #{durationTime,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      ahead_time = #{aheadTime,jdbcType=INTEGER},
+      enter_code = #{enterCode,jdbcType=VARCHAR}
+    where exam_id = #{examId,jdbcType=INTEGER}
+  </update>
+</mapper>
