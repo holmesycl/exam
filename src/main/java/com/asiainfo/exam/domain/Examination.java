@@ -2,7 +2,7 @@ package com.asiainfo.exam.domain;
 
 import java.util.Date;
 
-public class Exam {
+public class Examination {
     private Integer examId;
 
     private String examName;
@@ -18,6 +18,10 @@ public class Exam {
     private Integer aheadTime;
 
     private String enterCode;
+
+    private Integer creator;
+
+    private Integer examType;
 
     public Integer getExamId() {
         return examId;
@@ -81,5 +85,21 @@ public class Exam {
 
     public void setEnterCode(String enterCode) {
         this.enterCode = enterCode == null ? null : enterCode.trim();
+    }
+
+    public Integer getCreator() {
+        return creator;
+    }
+
+    public void setCreator(Integer creator) {
+        this.creator = creator;
+    }
+
+    public Integer getExamType() {
+        return examType;
+    }
+
+    public void setExamType(Integer examType) {
+        this.examType = examType;
     }
 }

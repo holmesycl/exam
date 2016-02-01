@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class ExamExample {
+public class ExaminationExample {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public ExamExample() {
+    public ExaminationExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 
@@ -612,6 +612,126 @@ public class ExamExample {
 
         public Criteria andEnterCodeNotBetween(String value1, String value2) {
             addCriterion("enter_code not between", value1, value2, "enterCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreatorIsNull() {
+            addCriterion("creator is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreatorIsNotNull() {
+            addCriterion("creator is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreatorEqualTo(Integer value) {
+            addCriterion("creator =", value, "creator");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreatorNotEqualTo(Integer value) {
+            addCriterion("creator <>", value, "creator");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreatorGreaterThan(Integer value) {
+            addCriterion("creator >", value, "creator");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreatorGreaterThanOrEqualTo(Integer value) {
+            addCriterion("creator >=", value, "creator");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreatorLessThan(Integer value) {
+            addCriterion("creator <", value, "creator");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreatorLessThanOrEqualTo(Integer value) {
+            addCriterion("creator <=", value, "creator");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreatorIn(List<Integer> values) {
+            addCriterion("creator in", values, "creator");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreatorNotIn(List<Integer> values) {
+            addCriterion("creator not in", values, "creator");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreatorBetween(Integer value1, Integer value2) {
+            addCriterion("creator between", value1, value2, "creator");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreatorNotBetween(Integer value1, Integer value2) {
+            addCriterion("creator not between", value1, value2, "creator");
+            return (Criteria) this;
+        }
+
+        public Criteria andExamTypeIsNull() {
+            addCriterion("exam_type is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andExamTypeIsNotNull() {
+            addCriterion("exam_type is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andExamTypeEqualTo(Integer value) {
+            addCriterion("exam_type =", value, "examType");
+            return (Criteria) this;
+        }
+
+        public Criteria andExamTypeNotEqualTo(Integer value) {
+            addCriterion("exam_type <>", value, "examType");
+            return (Criteria) this;
+        }
+
+        public Criteria andExamTypeGreaterThan(Integer value) {
+            addCriterion("exam_type >", value, "examType");
+            return (Criteria) this;
+        }
+
+        public Criteria andExamTypeGreaterThanOrEqualTo(Integer value) {
+            addCriterion("exam_type >=", value, "examType");
+            return (Criteria) this;
+        }
+
+        public Criteria andExamTypeLessThan(Integer value) {
+            addCriterion("exam_type <", value, "examType");
+            return (Criteria) this;
+        }
+
+        public Criteria andExamTypeLessThanOrEqualTo(Integer value) {
+            addCriterion("exam_type <=", value, "examType");
+            return (Criteria) this;
+        }
+
+        public Criteria andExamTypeIn(List<Integer> values) {
+            addCriterion("exam_type in", values, "examType");
+            return (Criteria) this;
+        }
+
+        public Criteria andExamTypeNotIn(List<Integer> values) {
+            addCriterion("exam_type not in", values, "examType");
+            return (Criteria) this;
+        }
+
+        public Criteria andExamTypeBetween(Integer value1, Integer value2) {
+            addCriterion("exam_type between", value1, value2, "examType");
+            return (Criteria) this;
+        }
+
+        public Criteria andExamTypeNotBetween(Integer value1, Integer value2) {
+            addCriterion("exam_type not between", value1, value2, "examType");
             return (Criteria) this;
         }
     }

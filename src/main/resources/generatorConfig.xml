@@ -53,7 +53,16 @@
 		</javaClientGenerator>
 		
 		<!-- tables -->
-		<table tableName="exam" />
+		<table tableName="dictionary" />
+		<table tableName="examination" />
+		<table tableName="member" />
+		<table tableName="question" />
+		<table tableName="choice_question" />
+		<table tableName="choice_item" />
+		<table tableName="choice_answer" />
+		<table tableName="paper" />
+		<table tableName="paper_question" />
+		<table tableName="paper_analysis" />
 		 
 	</context>
 </generatorConfiguration>
