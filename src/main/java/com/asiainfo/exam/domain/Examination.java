@@ -1,105 +1,142 @@
 package com.asiainfo.exam.domain;
 
+import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.UUID;
 
-public class Examination {
-    private Integer examId;
+public class Examination implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6941900531911522288L;
 
-    private String examName;
+	private Integer examId;
 
-    private String examAddr;
+	private String examName;
 
-    private Date answerTime;
+	private String examAddr;
 
-    private Integer durationTime;
+	private Date answerTime;
 
-    private Date createTime;
+	private String formatAnswer;
 
-    private Integer aheadTime;
+	private Integer durationTime;
 
-    private String enterCode;
+	private Date createTime;
 
-    private Integer creator;
+	private Integer aheadTime;
 
-    private Integer examType;
+	private String enterCode;
 
-    public Integer getExamId() {
-        return examId;
-    }
+	private Integer creator;
 
-    public void setExamId(Integer examId) {
-        this.examId = examId;
-    }
+	private Integer examType;
 
-    public String getExamName() {
-        return examName;
-    }
+	public Integer getExamId() {
+		return examId;
+	}
 
-    public void setExamName(String examName) {
-        this.examName = examName == null ? null : examName.trim();
-    }
+	public void setExamId(Integer examId) {
+		this.examId = examId;
+	}
 
-    public String getExamAddr() {
-        return examAddr;
-    }
+	public String getExamName() {
+		return examName;
+	}
 
-    public void setExamAddr(String examAddr) {
-        this.examAddr = examAddr == null ? null : examAddr.trim();
-    }
+	public void setExamName(String examName) {
+		this.examName = examName == null ? null : examName.trim();
+	}
 
-    public Date getAnswerTime() {
-        return answerTime;
-    }
+	public String getExamAddr() {
+		return examAddr;
+	}
 
-    public void setAnswerTime(Date answerTime) {
-        this.answerTime = answerTime;
-    }
+	public void setExamAddr(String examAddr) {
+		this.examAddr = examAddr == null ? null : examAddr.trim();
+	}
 
-    public Integer getDurationTime() {
-        return durationTime;
-    }
+	public Date getAnswerTime() {
+		return answerTime;
+	}
 
-    public void setDurationTime(Integer durationTime) {
-        this.durationTime = durationTime;
-    }
+	public void setAnswerTime(Date answerTime) {
+		this.answerTime = answerTime;
+		// 设置格式化的时间
+		setFormatAnswer(new SimpleDateFormat("yyyy-MM-dd HH:mm").format(answerTime));
+	}
 
-    public Date getCreateTime() {
-        return createTime;
-    }
+	public Integer getDurationTime() {
+		return durationTime;
+	}
 
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
+	public void setDurationTime(Integer durationTime) {
+		this.durationTime = durationTime;
+	}
 
-    public Integer getAheadTime() {
-        return aheadTime;
-    }
+	public Date getCreateTime() {
+		return createTime;
+	}
 
-    public void setAheadTime(Integer aheadTime) {
-        this.aheadTime = aheadTime;
-    }
+	public void setCreateTime(Date createTime) {
+		this.createTime = createTime;
+	}
 
-    public String getEnterCode() {
-        return enterCode;
-    }
+	public Integer getAheadTime() {
+		return aheadTime;
+	}
 
-    public void setEnterCode(String enterCode) {
-        this.enterCode = enterCode == null ? null : enterCode.trim();
-    }
+	public void setAheadTime(Integer aheadTime) {
+		this.aheadTime = aheadTime;
+	}
 
-    public Integer getCreator() {
-        return creator;
-    }
+	public String getEnterCode() {
+		return enterCode;
+	}
 
-    public void setCreator(Integer creator) {
-        this.creator = creator;
-    }
+	public void setEnterCode(String enterCode) {
+		this.enterCode = enterCode == null ? null : enterCode.trim();
+	}
 
-    public Integer getExamType() {
-        return examType;
-    }
+	public Integer getCreator() {
+		return creator;
+	}
 
-    public void setExamType(Integer examType) {
-        this.examType = examType;
-    }
+	public void setCreator(Integer creator) {
+		this.creator = creator;
+	}
+
+	public Integer getExamType() {
+		return examType;
+	}
+
+	public void setExamType(Integer examType) {
+		this.examType = examType;
+	}
+
+	public String getFormatAnswer() {
+		return formatAnswer;
+	}
+
+	public void setFormatAnswer(String formatAnswer) {
+		this.formatAnswer = formatAnswer;
+	}
+
+	/**
+	 * 随机生成进入考试编号
+	 * 
+	 * @return
+	 */
+	public static String generalExamCode() {
+		return UUID.randomUUID().toString().substring(0, 6);
+	}
+
+	@Override
+	public String toString() {
+		return "Examination [examId=" + examId + ", examName=" + examName + ", examAddr=" + examAddr + ", answerTime=" + answerTime
+				+ ", formatAnswer=" + formatAnswer + ", durationTime=" + durationTime + ", createTime=" + createTime + ", aheadTime="
+				+ aheadTime + ", enterCode=" + enterCode + ", creator=" + creator + ", examType=" + examType + "]";
+	}
+
 }

@@ -105,7 +105,7 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.asiainfo.exam.domain.Examination" >
+  <insert id="insert" parameterType="com.asiainfo.exam.domain.Examination" useGeneratedKeys="true" keyProperty="examId">
     insert into examination (exam_id, exam_name, exam_addr, 
       answer_time, duration_time, create_time, 
       ahead_time, enter_code, creator, 
@@ -115,7 +115,7 @@
       #{aheadTime,jdbcType=INTEGER}, #{enterCode,jdbcType=VARCHAR}, #{creator,jdbcType=INTEGER}, 
       #{examType,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.asiainfo.exam.domain.Examination" >
+  <insert id="insertSelective" parameterType="com.asiainfo.exam.domain.Examination" useGeneratedKeys="true" keyProperty="examId">
     insert into examination
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="examId != null" >
