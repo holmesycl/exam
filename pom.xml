@@ -61,9 +61,25 @@
 		
 		<shiro.version>1.2.4</shiro.version>
 		
+		
+		<mail-api.version>1.5.5</mail-api.version>
+		<mail.version>1.5.5</mail.version>
+		
 	</properties>
 	
 	<dependencies>
+	
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>javax.mail-api</artifactId>
+			<version>${mail-api.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.sun.mail</groupId>
+			<artifactId>javax.mail</artifactId>
+			<version>${mail.version}</version>
+		</dependency>
 	
 		<dependency>
 			<groupId>org.apache.shiro</groupId>
